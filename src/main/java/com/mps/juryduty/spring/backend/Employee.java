@@ -1,68 +1,62 @@
 package com.mps.juryduty.spring.backend;
 
+import java.util.Set;
+import java.util.Set;
+
 public class Employee {
 
-    private String firstname;
-    private String lastname;
-    private String title;
-    private String email;
-    private String notes;
+    private String rounds;
+    private String sets;
+    private String juryBoss;
+    private Set<String> jury;
+    private String contestant;
 
-    public Employee(String firstname, String lastname, String email,
-            String title) {
+    public Employee(String rounds, String sets, String juryBoss, Set<String> jury, String contestant) {
         super();
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.title = title;
+        this.rounds = rounds;
+        this.sets = sets;
+        this.juryBoss = juryBoss;
+        this.jury = jury;
+        this.contestant = contestant;
     }
 
-    public Employee() {
-
+    public String getRounds() {
+        return rounds;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public void setRounds(String rounds) {
+        this.rounds = rounds;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public String getSets() {
+        return sets;
     }
 
-    public String getLastname() {
-        return lastname;
+    public void setSets(String sets) {
+        this.sets = sets;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public String getJuryBoss() {
+        return juryBoss;
     }
 
-    public String getTitle() {
-        return title;
+    public void setJuryBoss(String juryBoss) {
+        this.juryBoss = juryBoss;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public Set<String> getJury() {
+        return jury;
     }
 
-    public String getEmail() {
-        return email;
+    public void setJury(Set<String> jury) {
+        this.jury = jury;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getContestant() {
+        return contestant;
     }
 
-    @Override
-    public String toString() {
-        return firstname + " " + lastname + "(" + email + ")";
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setContestant(String contestant) {
+        this.contestant = contestant;
     }
 }

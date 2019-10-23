@@ -51,9 +51,9 @@ public class MasterDetailView extends Div implements AfterNavigationObserver {
         employees = new Grid<>();
         employees.addThemeVariants(GridVariant.LUMO_NO_BORDER);
         employees.setHeightFull();
-        employees.addColumn(Employee::getFirstname).setHeader("First name");
-        employees.addColumn(Employee::getLastname).setHeader("Last name");
-        employees.addColumn(Employee::getEmail).setHeader("Email");
+        employees.addColumn(Employee::getContestant).setHeader("First name");
+        employees.addColumn(Employee::getRounds).setHeader("Last name");
+        employees.addColumn(Employee::getSets).setHeader("Email");
 
         //when a row is selected or deselected, populate form
         employees.asSingleSelect().addValueChangeListener(event -> populateForm(event.getValue()));

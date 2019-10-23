@@ -5,10 +5,13 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.checkbox.Checkbox;
+import com.vaadin.flow.component.checkbox.CheckboxGroup;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.listbox.ListBox;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -30,10 +33,11 @@ import java.util.ArrayList;
 @CssImport("styles/views/form/form-view.css")
 public class FormView extends Div {
 
-    private TextField firstname = new TextField();
-    private TextField lastname = new TextField();
-    private TextField email = new TextField();
-    private TextArea notes = new TextArea();
+    private TextField rounds = new TextField();
+    private TextField sets = new TextField();
+    private TextField contestant = new TextField();
+    private Select<String> juryBoss = new Select<>();
+    private CheckboxGroup<String> jury = new CheckboxGroup();
 
     private Button cancel = new Button("Cancel");
     private Button save = new Button("Save");
@@ -41,6 +45,20 @@ public class FormView extends Div {
     public FormView() {
         setId("form-view");
         VerticalLayout wrapper = createWrapper();
+
+        juryBoss.setItems(new ArrayList<String>(){
+            {
+                add("Alex Telehoi");
+                add("Smaranda Alexandru");
+            }
+        });
+
+        jury.setItems(new ArrayList<String>(){
+            {
+                add("Alex Telehoi");
+                add("Smaranda Alexandru");
+            }
+        });
 
         createTitle(wrapper);
         createFormLayout(wrapper);
@@ -60,15 +78,6 @@ public class FormView extends Div {
             });
             this.setVisible(false);
         });
-        Select<String> tara = new Select<>();
-        tara.setPlaceholder("Alege tara");
-        tara.setItems(new ArrayList<String>(){
-            {
-                add("blabla");
-                add("romania");
-            }
-        });
-        add(tara);
         add(wrapper);
     }
 
@@ -86,14 +95,16 @@ public class FormView extends Div {
 
     private void createFormLayout(VerticalLayout wrapper) {
         FormLayout formLayout = new FormLayout();
-        addFormItem(wrapper, formLayout, firstname, "First name");
-        addFormItem(wrapper, formLayout, lastname, "Last name");
-        FormLayout.FormItem emailFormItem = addFormItem(wrapper, formLayout,
-                email, "Email");
-        formLayout.setColspan(emailFormItem, 2);
-        FormLayout.FormItem notesFormItem = addFormItem(wrapper, formLayout,
-                notes, "Notes");
-        formLayout.setColspan(notesFormItem, 2);
+        addFormItem(wrapper, formLayout, rounds, "Rounds");
+        addFormItem(wrapper, formLayout, sets, "Sets");
+        FormLayout.FormItem contestantsFormItem = addFormItem(wrapper, formLayout,
+                contestant, "Contestants");
+        //formLayout.setColspan(emailFormItem, 2);
+        FormLayout.FormItem juryFormItem = addFormItem(wrapper, formLayout,
+                jury, "Jury");
+        FormLayout.FormItem juryBossFormItem = addFormItem(wrapper, formLayout,
+                juryBoss, "Jury Boss");
+        //formLayout.setColspan(notesFormItem, 2);
     }
 
     private void createButtonLayout(VerticalLayout wrapper) {
